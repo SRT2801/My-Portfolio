@@ -1,0 +1,81 @@
+<section class="hero-container">
+
+  <div class="particles-container" #particlesContainer></div>
+
+  <div class="hero-content">
+    <div class="hero-intro">
+      <div class="greeting">Hola, soy</div>
+      <h1 class="name">Sahir Ruiz<span class="accent">.</span></h1>
+    </div>
+
+    <div class="hero-title">
+      <h2 class="position">
+        <span class="text-wrapper">
+          <span>Soy</span>
+          <span class="roles">
+            <span class="typewriter-text">{{currentDisplayText}}<span class="cursor">|</span></span>
+          </span>
+        </span>
+      </h2>
+    </div>
+
+    <p class="hero-description">
+      Transformo ideas en experiencias digitales cautivadoras.
+      Especializado en la construcción de interfaces con un enfoque
+      centrado en el usuario y atención al detalle.
+    </p>
+
+    <div class="stats-container">
+      <div class="stat-item">
+        <span class="stat-number">{{projectsCount}}+</span>
+        <span class="stat-label">Proyectos</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">{{experienceYears}}</span>
+        <span class="stat-label">Años de Experiencia</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Satisfacción</span>
+      </div>
+    </div>
+
+    <div class="hero-cta">
+      <app-button text="Ver proyectos" type="primary" size="large" (clicked)="scrollToProjects()">
+      </app-button>
+      <app-button text="Descargar CV" type="outline" size="large" (clicked)="downloadCV()">
+        <span class="button-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"></path>
+          </svg>
+        </span>
+      </app-button>
+    </div>
+  </div>
+
+  <!-- Tecnologías flotantes -->
+  <div class="tech-icons">
+    <div class="tech-icon" *ngFor="let tech of techIcons; let i = index" [ngStyle]="{
+        'animation-delay': (i * 0.5) + 's',
+        'left': tech.left,
+        'top': tech.top,
+        'opacity': 0.6 + (i * 0.05)
+      }">
+      <img [src]="tech.icon" [alt]="tech.name" (error)="handleImageError($event)" />
+      <span class="tech-fallback">{{tech.name.charAt(0)}}</span>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="animated-shape"></div>
+    <div class="animated-code">
+      <pre><code>{{ codeSnippet }}</code></pre>
+    </div>
+  </div>
+
+  <div class="scroll-indicator" (click)="scrollToNextSection()">
+    <span>Scroll</span>
+    <div class="scroll-arrow">↓</div>
+  </div>
+</section>

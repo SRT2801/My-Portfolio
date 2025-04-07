@@ -1,0 +1,47 @@
+<section class="technologies-section" id="technologies">
+  <div class="animated-accent"></div>
+
+  <div class="container">
+    <h2 class="section-title">Mis Proyectos</h2>
+
+    <div class="category-selector">
+      <button [class.active]="activeCategory === 'frontend'" (click)="setActiveCategory('frontend')">
+        <i class="fas fa-laptop-code"></i> Frontend
+      </button>
+      <button [class.active]="activeCategory === 'backend'" (click)="setActiveCategory('backend')">
+        <i class="fas fa-server"></i> Backend
+      </button>
+      <button [class.active]="activeCategory === 'mobile'" (click)="setActiveCategory('mobile')">
+        <i class="fas fa-mobile-alt"></i> Mobile
+      </button>
+    </div>
+
+    <div class="projects-grid">
+      <div *ngFor="let project of getActiveProjects()" class="project-card" [@techCardAnimation]>
+        <div *ngIf="project.category === 'frontend'" class="project-image">
+          <img [src]="project.image" [alt]="project.name" (error)="handleImageError($event)">
+        </div>
+
+        <div *ngIf="project.category !== 'frontend'" class="project-icon">
+          <img [src]="project.icon" [alt]="project.name + ' icon'" (error)="handleImageError($event)">
+        </div>
+
+        <div class="project-info">
+          <h3>{{project.name}}</h3>
+          <p class="project-description">{{project.description}}</p>
+
+          <div class="project-tech-stack">
+            <span *ngFor="let tech of project.techStack" class="tech-badge">{{tech}}</span>
+          </div>
+
+          <div class="project-links">
+            <a [href]="project.repoUrl" target="_blank" class="repo-link">GitHub</a>
+            <a *ngIf="project.demoUrl" [href]="project.demoUrl" target="_blank" class="demo-link">Demo</a>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>

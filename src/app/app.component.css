@@ -1,0 +1,15 @@
+/* Aquí es donde debemos mover todo el código CSS */
+
+:host {
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Puedes añadir aquí estilos adicionales para el componente principal */
